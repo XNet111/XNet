@@ -1,0 +1,1426 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('TTNormsPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MyFontBold';
+    src: url('TTNormsPro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MyFontBlack';
+    src: url('TTNormsPro-Black.ttf') format('truetype');
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Основные стили */
+body {
+    font-family: 'MyFont', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333333;
+}
+
+/* Шапка */
+header {
+    display: flex;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    height: 92px;
+    box-shadow: 0 4px 4px 0 #d8d3cb;
+    z-index: 1000;
+    top: 30px;
+}
+
+.language-bar {
+    display: flex;
+    align-items: center;
+    position: fixed; /* Или absolute, в зависимости от вашего дизайна */
+    top: 0; /* Расположение .language-bar в верхней части экрана */
+    left: 0;
+    right: 0; /* Обеспечивает распространение .language-bar на всю ширину экрана */
+    padding: 5px 20px; /* Отступы слева и справа */
+    background-color: #efedea; /* Фоновый цвет блока */
+    z-index: 1001; /* Убедитесь, что .language-bar будет над navbar */
+    /* Предполагаемая высота, достаточная для размещения всех элементов */
+    height: 20px;
+
+}
+
+#language-select {
+    border: none; /* Граница в стиле дизайна */
+    padding: 5px 10px;
+    background-color: #efedea; /* Белый фон */
+    border-radius: 4px; /* Скругленные углы */
+    font-size: 14px; /* Размер шрифта согласно дизайну */
+    color: #333; /* Цвет текста согласно дизайну */
+    cursor: pointer;
+    -webkit-appearance: none; /* Убрать стандартный стиль в iOS */
+    -moz-appearance: none; /* Убрать стандартный стиль в Firefox */
+    appearance: none; /* Убрать стандартный стиль для остальных браузеров */
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'MyFontMedium', sans-serif;
+    color: #333333;
+}
+
+/* Стили для иконки стрелки, если вы хотите добавить */
+.language-switcher::after {
+    content: '▼'; /* Иконка стрелки */
+    color: #333; /* Цвет иконки согласно дизайну */
+    font-size: 12px; /* Размер иконки */
+    position: absolute;
+    right: 8px; /* Отступ иконки от правого края */
+    top: 50%; /* Выравнивание по вертикали */
+    transform: translateY(-50%); /* Центрирование иконки */
+    pointer-events: none; /* Сделать иконку неактивной для событий мыши */
+}
+
+#language-text {
+    margin-right: auto; /* Это выравнивает текст к правой стороне */
+    padding: 5px 0; /* Отступы для текста */
+    /* Остальные стили для #language-text */
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'MyFontMedium', sans-serif;
+    color: #333333;
+}
+
+.globe{
+    height: 25px;
+    width: 25px;
+}
+
+#language-text svg {
+    transition: transform 0.5s ease; /* Плавный переход в течение 0.5 секунды */
+    margin-right: 5px; /* Начальный отступ справа */
+}
+
+
+/* Скрыть стрелку по умолчанию внутри select (только для Webkit браузеров) */
+#language-select::-ms-expand {
+    display: none;
+}
+
+.top-content {
+    width: 100%;
+    /* Остальные стили */
+}
+
+.divider {
+    width: 94%; 
+    border: none;
+    height: 2px;
+    background-color: #E0E0E0; 
+    margin: 0 43px; 
+    display: none;
+}
+
+
+.logo-container {
+    position: absolute;
+    align-items: center; /* Добавлено выравнивание для контейнера логотипа */
+    margin-left: 30px;
+}
+
+a.logo-container {
+    display: block; /* или 'inline-block', в зависимости от нужного поведения */
+    text-decoration: none; /* убирает подчеркивание ссылки */
+}
+
+.logo-container .logo {
+    height: 25px;
+}
+
+#karma1{
+    position: absolute;
+    z-index: 1;
+    margin-left: 4px;
+}
+
+#karma2{
+    z-index: 2;
+    position: relative;
+}
+
+
+#logo_in{
+    display: none;
+    position: relative;
+}
+
+@keyframes spinY {
+  0% {
+    transform: rotateY(0deg);
+  }
+  25% {
+    transform: rotateY(360deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+#karma2 {
+    animation: spinY 5s infinite; /* Общее время анимации - 4 секунды */
+    animation-timing-function: linear, step-end; /* Плавное вращение и резкая остановка */
+    transform-origin: center; /* Вращение вокруг центра по оси Y */
+}
+
+
+.hamburger-icon {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; /* Центрирование элементов по вертикали */
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-top: 14px;
+}
+
+
+.line {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+}
+
+
+/* Навигация стили*/
+.navbar {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links a:not(.contact-us) {
+    /* Стили для всех ссылок, кроме 'Contact Us' */
+    align-items: center;
+
+}
+
+.nav-links .contact-us {
+   right: 0;
+    position: absolute;
+}
+
+.navbar a {
+    margin: 0 30px;
+    text-decoration: none;
+    font-family: 'MyFont', sans-serif;
+    color: #333;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    margin: 0 30px;
+    text-decoration: none;
+    font-family: 'MyFont', sans-serif;
+    color: #558CCE ;
+    
+}
+
+.contact-us {
+    margin: 0px 0px 0px 10px;
+    padding: 7px 20px 4px;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+}
+
+.nav-links .contact-us{
+    font-family: 'MyFontBold', sans-serif;
+    font-size: 12px;
+}
+
+.contact-us:hover {
+    background-color: #EFEDEA;
+    border-color: transparent;
+}
+
+/* Приближение верхней и нижней линии к центру и исчезновение */
+.hamburger-icon.active .line:nth-child(1) {
+    transform: translateY(6px); /* Приближаем верхнюю линию к центру */
+    opacity: 0;
+}
+
+.hamburger-icon.active .line:nth-child(3) {
+    transform: translateY(-6px); /* Приближаем нижнюю линию к центру */
+    opacity: 0;
+}
+
+/* Исчезновение средней линии после приближения других линий */
+.hamburger-icon.active .line:nth-child(2) {
+    transition: opacity 0.3s ease 0.3s; /* Задержка перед исчезновением */
+    opacity: 0;
+}
+
+/* Скрыть верхнюю и нижнюю линии */
+.hamburger-icon.active .line:nth-child(1),
+.hamburger-icon.active .line:nth-child(3) {
+    opacity: 0;
+}
+
+/* Дополнительная анимация для превращения в крестик */
+.hamburger-icon.active.cross .line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    opacity: 1;
+}
+
+.hamburger-icon.active.cross .line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+    opacity: 1;
+}
+
+/* Анимация от крестика к одной линии */
+.hamburger-icon:not(.active) .line:nth-child(1) {
+    transform: rotate(0) translateY(0);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hamburger-icon:not(.active) .line:nth-child(3) {
+    transform: rotate(0) translateY(0);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Задержка перед возвращением к гамбургер-состоянию */
+.hamburger-icon:not(.active) .line:nth-child(1),
+.hamburger-icon:not(.active) .line:nth-child(3) {
+    transition: transform 0.3s ease 0.3s, opacity 0.3s ease 0.6s;
+    opacity: 1;
+}
+
+.hamburger-icon:not(.active) .line:nth-child(2) {
+    opacity: 1;
+    transition: opacity 0.3s ease 0.3s;
+}
+
+/* Медиа-запросы для адаптивности и гамбургер-меню */
+@media (max-width: 1280px) {
+    .hamburger-icon {
+        display: flex;
+        margin-left: auto;
+        position: relative;
+    }
+
+    .nav-links,
+    .contact-us {
+        display: none;
+    }
+
+    /* Стили для показа меню при активации гамбургер-иконки */
+    .nav-links.active,
+    .contact-us.active {
+        display: block;
+        /* Дополнительные стили для мобильного меню */
+    }
+    .hamburger-icon:hover .line{
+        background-color: #558CCE; /* Замените #цвет на нужный вам цветовой код */
+    }
+}
+
+
+/* Стили для выпадающего
+ меню */
+@media (max-width: 1280px) {
+    .top-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+    .logo-container{
+        display: flex;
+        align-items: center;
+        margin-right: auto;
+    }
+
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255); /* Белый фон с небольшой прозрачностью *//
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Центрирование содержимого по горизонтали */
+        padding-top: 50px; /* Отступ сверху для логотипа */
+        box-sizing: border-box;
+        transition: transform 0.4s ease;
+        transform: translateY(-100%); /* Изначально меню скрыто за пределами экрана */
+        z-index: 1000; /* Убедитесь, что меню будет над всеми другими элементами */
+        font-size: 20px;
+    }
+
+    .divider{
+        display: block;
+        width: 80%; 
+    }
+
+    .navbar.active {
+        transform: translateY(0); /* Меню опускается сверху при активации */
+    }
+
+    .nav-links .contact-us {
+        right: auto; /* Отменяем прижатие к правому краю */
+        /* Вы можете добавить дополнительные стили здесь, если нужно */
+    }
+
+    .navbar .nav-links,
+    .navbar .logo-container {
+        width: 100%; /* Полная ширина */
+        padding: 15px; /* Отступы для создания пространства вокруг элементов */
+        box-sizing: border-box;
+        display: block; /* Элементы отображаются как блоки, один под другим */
+        text-align: left; /* Текст выравнивается по левому краю */
+    }
+
+    .navbar .nav-links a {
+        display: block; /* Ссылки отображаются как блоки, одна под другой */
+        margin: 20px ; /* Отступы между ссылками */
+        color: black; /* Цвет текста ссылок */
+        text-decoration: none; /* Убираем подчеркивание ссылок */
+        margin-left: 30px;
+    }
+
+    .navbar .nav-links a:hover {
+        color: #558CCE;
+    }
+
+
+    .contact-us {
+        display: block;
+        padding: 7px 20px 4px;
+        background-color: #225A9D;
+        color: white;
+        font-family: 'MyFont', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        margin-right: auto;
+    }
+
+    .navbar .nav-links .contact-us {
+        color: white; /* Белый цвет текста */
+        border: none;
+    }
+
+
+    .contact-us:hover {
+        background-color: #EFEDEA;
+        border-color: transparent;
+    }
+
+    #logo_in{
+        display: block;
+        margin-left: 32px;
+    }
+
+    .hamburger-icon {
+        display: flex; /* Убедитесь, что иконка гамбургера видна */
+        position: relative; /* Относительное позиционирование внутри header-container */
+        z-index: 1001;
+        margin-left: auto; /* Иконка гамбургера будет справа */
+        align-self: center;
+        margin-right: 10px;
+        margin-top: -8px;
+    }
+
+
+    .logo {
+        height: auto; /* Высота логотипа будет автоматически подстроена */
+        max-height: 50px; /* Максимальная высота логотипа */
+        width: auto; /* Ширина логотипа будет подстраиваться */
+    }
+
+    .navbar.active .logo-container {
+        margin-top: 0; /* Убираем верхний отступ при активации меню */
+    }
+}    
+
+
+
+
+/* Главный блок */
+.split-screen {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'MyFont', sans-serif;
+    padding-top: 130px; /* Должно быть равно или больше высоты navbar */
+    margin-top: 92px; /* Должно быть равно высоте navbar */
+    margin: 0 auto;
+    /* Остальные стили */
+}
+
+.left-pane, .right-pane {
+    flex: 1;
+    flex-basis: 50%;
+    box-sizing: border-box;
+    background-color: #1F487E;
+}
+
+.left-pane {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+#hero {
+    padding: 100px;
+}
+
+
+#hero h1 {
+    font-size: 50px; 
+    font-family: 'MyFontBold', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: white;
+}
+
+#hero p {
+    font-size: 22px; 
+    font-family: 'MyFont', sans-serif;
+}
+
+.right-pane img {
+    display: block;
+    max-width: 100%;/* Чтобы изображение сохраняло свои пропорции */
+    height: auto;
+    border-bottom-left-radius: 60px;
+    margin-bottom: 0; /* Добавляем этот стиль */
+    background-size: cover;   
+}
+
+.btn {
+    display: inline-block;
+    margin: 10px 0;
+    background-color: #D9F0FF; /* Пример цвета кнопки */
+    color: #225A9D;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'MyFontMedium', sans-serif;
+    line-height: 1.6;
+    padding: 12px 28px;
+    font-weight: 700;
+}
+
+.btn:hover {
+    background-color:   #E6E7E7; /* Пример цвета кнопки */  
+}
+
+.btn_1{
+    margin-left: 15px;
+    color: white;
+    font-size: 18px;
+    text-decoration-thickness: 1px;
+    font-family: 'MyFontBold', sans-serif;
+    text-decoration: none;
+     border-bottom: 1px solid white; /* Добавляем нижнюю границу */
+    padding-bottom: 1px;
+    display: inline-block; /* Убедитесь, что ссылка ведет себя как блочный элемент для правильного отображения границы */
+    margin-bottom: 2px;
+    line-height: 0.8;
+}
+
+
+.btn_1:hover{
+    color: #3a72b5;
+
+}
+
+#hero svg {
+    padding-left: 10px; /* Небольшой отступ от текста кнопки */
+    fill: currentColor;
+}
+
+.btn_1:hover svg {
+    fill: #3a72b5; /* Цвет SVG при наведении */
+}
+
+@media (max-width: 1200px){
+    #hero{
+        padding: 40px;
+    }
+    #hero h1{
+        font-size: 32px;
+    }
+
+    #hero p{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1000px) {
+    .split-screen {
+        flex-direction: column; /* Стекаем блоки вертикально */
+        padding-top: 65px; /* Половина от изначального отступа, предполагаем что navbar тоже уменьшен */
+        margin-top: 46px; /* Половина высоты navbar для средних устройств */
+    }
+
+    .left-pane, .right-pane {
+        flex-basis: auto; /* Автоматическая ширина блоков */
+        width: 100%; /* Блоки теперь займут всю ширину */
+    }
+
+    .left-pane {
+        padding: 20px; /* Уменьшенные отступы внутри блока для текста */
+    }
+
+    #hero h1 {
+        font-size: 50px; /* Уменьшенный размер шрифта для заголовка */
+    }
+
+    #hero p {
+        font-size: 24px; /* Уменьшенный размер шрифта для параграфа */
+    }
+
+    .btn{
+        padding: 10px 24px; /* Уменьшенные отступы для кнопок */
+        font-size: 12px; /* Уменьшенный размер шрифта для кнопок */
+        margin: 8px 0; /* Уменьшенные маржины сверху и снизу для кнопок */
+    }
+    .right-pane img{
+        border-bottom-left-radius: 0px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .split-screen {
+        flex-direction: column;
+        padding-top: 60px; /* Меньше, так как navbar тоже будет меньше */
+        margin-top: 68px; /* Половина высоты navbar на мобильных */
+    }
+
+    .left-pane, .right-pane {
+        flex-basis: 100%;
+    }
+
+
+    #hero h1 {
+        font-size: 36px; /* Меньший размер шрифта для заголовка */
+    }
+
+    #hero p {
+        font-size: 20px; /* Меньший размер шрифта для параграфа */
+    }
+
+    .btn {
+        font-size: 12px; /* Меньший размер шрифта для кнопок */
+        padding: 8px 20px; /* Меньшие отступы для кнопок */
+    }
+    #hero{
+        padding-bottom: 42px;
+    }
+    .right-pane img{
+        border-bottom-left-radius: 0px;
+    }
+}
+
+@media (max-width: 400px) {
+     #hero h1 {
+        font-size: 30px; /* Меньший размер шрифта для заголовка */
+    }
+
+    #hero p {
+        font-size: 18px; /* Меньший размер шрифта для параграфа */
+    }
+
+    .btn {
+        font-size: 12px; /* Меньший размер шрифта для кнопок */
+        padding: 8px 20px; /* Меньшие отступы для кнопок */
+    }
+    #hero{
+        padding-bottom: 42px;
+    }
+    .right-pane img{
+        border-bottom-left-radius: 0px;
+    }
+}
+
+
+
+
+/* Три блока */
+.section {
+    display: flex;
+    justify-content: center;
+}
+
+.block {
+    flex-grow: 1; /* Разделение пространства поровну между блоками */
+    text-align: center; /* Центрирование текста */
+    padding: 50px; /* Отступы внутри каждого блока */
+    margin-left: 1px;
+    margin-right: 1px;
+    background-color: #f7f6f5;
+    text-align: left;
+    min-width: 400px;
+}
+
+.empty-block {
+    display: none; /* По умолчанию пустые блоки не отображаются */
+    background-color: #f7f6f5; 
+    width: 50px;
+}
+
+@media (min-width: 1400px) {
+    .empty-block {
+        display: block; /* Отображаем пустые блоки на больших экранах */
+    }
+    
+}
+
+@media (max-width: 1400px){
+    .block {
+        min-width: 0;
+    }
+}
+
+.block h2 {
+    display: inline-block;
+    background-color: #225A9D;
+    font-size: 13px;
+    margin-top: 0; /* Убираем верхний отступ у заголовков */
+    margin-bottom: 0.5em; /* Небольшой отступ под заголовком */
+    padding: 6px 7px 2px;
+    color: white;
+    font-family: 'MyFontBold', sans-serif;
+    font-weight: 700;
+}
+
+.block p {
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: 'MyFontBold', sans-serif;
+}
+
+.block a {
+    display: inline-block; /* Для возможности применения padding и margin */
+    color: inherit; /* Цвет текста, как у родительского элемента */
+    text-decoration-thickness: 1px;
+    margin-top: -10px;
+    font-family: 'MyFontBold', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    border-bottom: 1px solid #000000; /* Добавляем нижнюю границу */
+    padding-bottom: 1px;
+    display: inline-block; /* Убедитесь, что ссылка ведет себя как блочный элемент для правильного отображения границы */
+    margin-bottom: 2px;
+    line-height: 0.8;
+}
+
+.block svg{
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column;
+    }
+
+    .block {
+        min-width: 0; /* Сброс минимальной ширины, чтобы блок мог сжиматься */
+        padding: 20px; /* Уменьшение отступов для мобильных устройств */
+        margin: 1px 0; /* Маржин сверху и снизу для отступа между блоками */
+    }
+
+    .block h2, .block p, .block a {
+        margin-left: 0; /* Убираем отступы слева */
+        margin-right: 0; /* Убираем отступы справа */
+    }
+
+    .empty-block {
+        display: none; /* Убедитесь, что пустые блоки остаются скрытыми */
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 1399px) {
+    .section {
+        flex-direction: row; /* Элементы расположены в строку */
+        justify-content: space-between; /* Распределяем элементы с равными промежутками */
+        align-items: stretch; /* Растягиваем элементы по вертикали для заполнения секции */
+        padding-top: 0; /* Если высота navbar меньше на средних экранах, уменьшаем этот отступ */
+        margin-top: 0; /* Убираем верхний маржин, если он не нужен */
+    }
+
+    .block {
+        flex-basis: calc(100% / 3); /* Вычисляем базовую ширину для трех блоков */
+        padding: 20px; /* Уменьшаем отступы для средних экранов */
+        margin: 0; /* Убираем маржин для устранения нежелательных промежутков */
+        margin-left: 1px;
+    margin-right: 1px;
+        box-sizing: border-box; /* Включаем внутренние отступы и границы в общую ширину элемента */
+    }
+
+    .empty-block {
+        display: none; /* Убедитесь, что пустые блоки остаются скрытыми */
+    }
+}
+
+
+
+
+/* Профессинальная психодиагностика кандидатов */
+.container {
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px; /* Максимальная ширина контейнера, может быть изменена */
+    margin: 0 auto; /* Центрирование контейнера */
+}
+
+.image-section {
+    flex-basis: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.image-section img {
+    display: block;
+    max-width: 100%; /* Процентная ширина для адаптивности */
+    height: auto; /* Высота автоматически пропорциональна ширине */
+    object-fit: cover; /* Убедитесь, что изображение заполняет контейнер без искажений */
+    display: block;
+    margin: 0 auto; /* Центрируем изображение */  
+}
+
+.text-section {
+    flex-basis: 50%;
+    padding: 30px 0px 0px 70px;
+}
+
+.text-section h1 {
+    font-size: 40px; /* Размер шрифта заголовка */
+    color: #3D3936; /* Цвет текста */
+    margin-bottom: 20px;
+    font-family: 'MyFontBold', sans-serif;
+    line-height: 1.2;
+}
+
+.text-section p {
+    color: #3D3936; /* Цвет текста абзаца */
+    line-height: 1.6; /* Межстрочный интервал */
+    font-family: 'MyFont', sans-serif;
+    font-size: 20px;
+}
+
+.advantage-link {
+    color: #000000;
+    text-decoration-thickness: 1px;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #333; /* Добавляем нижнюю границу */
+    padding-bottom: 1px;
+    display: inline-block; /* Убедитесь, что ссылка ведет себя как блочный элемент для правильного отображения границы */
+    margin-bottom: 2px;
+    line-height: 1;
+    font-family: 'MyFontBold', sans-serif;
+    font-weight: 700;
+}
+
+.text-section svg{
+    margin-left: 3px;
+}
+
+/*Анимация появления секции*/
+#section_one, #section_two, #section_three {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.3s ease-out;
+}
+
+#section_one.visible, #section_two.visible, #section_three.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+    .container {
+        flex-direction: column; /* Стекаем элементы вертикально */
+        padding: 0;
+    }
+
+    .image-section, .text-section {
+        flex-basis: 100%; /* Каждый блок занимает всю ширину */
+    }
+
+     .image-section {
+        flex-basis: 100%; /* Картинка занимает всю ширину */
+        padding: 0; /* Убираем внутренние отступы */
+    }
+
+    .image-section img {
+        width: 100%; /* Картинка растягивается на всю ширину */
+        height: 700px; /* Высота автоматически подгоняется */
+        max-width: none; /* Сбрасываем ограничение максимальной ширины */
+        border-bottom-left-radius: 0; /* При необходимости убираем скругление */
+    }
+
+    .text-section {
+        padding: 100px;
+        text-align: center;
+        margin-right: 10px;
+    }
+    
+    .text-section h1{
+        font-size: 28px;
+    }
+
+    .text-section p{
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Стекаем элементы вертикально */
+        padding: 0;
+    }
+
+    .image-section, .text-section {
+        flex-basis: 100%; /* Каждый блок занимает всю ширину */
+    }
+
+     .image-section {
+        flex-basis: 100%; /* Картинка занимает всю ширину */
+        padding: 0; /* Убираем внутренние отступы */
+    }
+
+    .image-section img {
+        width: 100%; /* Картинка растягивается на всю ширину */
+        height: auto; /* Высота автоматически подгоняется */
+        max-width: none; /* Сбрасываем ограничение максимальной ширины */
+        border-bottom-left-radius: 0; /* При необходимости убираем скругление */
+    }
+
+    .text-section {
+        padding: 30px 30px; /* Уменьшаем отступы для текстового блока */
+        text-align: center;
+        margin-right: 10px;
+    }
+    
+    .text-section h1{
+        font-size: 28px;
+    }
+
+    .text-section p{
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* Стекаем элементы вертикально */
+    }
+
+    .image-section, .text-section {
+        flex-basis: 100%; /* Каждый блок занимает всю ширину */
+    }
+
+    .image-section img {
+        width: 100%; /* Изображение растягивается на всю ширину */
+        height: auto; /* Высота автоматически подгоняется */
+        padding-top: 0; /* Убираем отступ сверху */
+    }
+
+    .text-section {
+        padding: 20px 20px; /* Уменьшаем отступы для текстового блока */
+        margin-right: 10px;
+    }
+
+    .text-section h1{
+        font-size: 26px;
+    }
+
+    .text-section p{
+        font-size: 16px;
+    }
+}
+
+
+/*Section Two*/
+#section_two{
+    padding-top: 0px;
+}
+
+#section_two img{
+    border-bottom-left-radius: 0px;
+}
+
+#section_two h1{
+    font-size: 50px; 
+    font-family: 'MyFontBold', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #B6C8DF;
+}
+
+#section_two p{
+    font-size: 20px; 
+    font-family: 'MyFont', sans-serif;
+}
+
+#section_two .btn{
+    display: inline-block;
+    margin: 10px 0;
+    background-color: #B6C8DF; /* Пример цвета кнопки */
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'MyFontMedium', sans-serif;
+    line-height: 1.6;
+    padding: 12px 28px;
+    font-weight: 700;
+}
+
+#section_three{
+    padding-top: 0px;
+}
+
+#section_three .left-pane {
+    background-color: #759ECE;
+    color: #333;
+}
+
+#section_three .left-pane .btn{
+    background-color: #225A9D;
+}
+
+
+#section_three img{
+    border-bottom-left-radius: 0px;
+}
+
+#section_three h1{
+    font-size: 50px; 
+    font-family: 'MyFontBold', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #225A9D;;
+}
+
+#section_three p{
+    font-size: 20px; 
+    font-family: 'MyFont', sans-serif;
+    color: #225A9D;;
+}
+
+#section_three .btn{
+    display: inline-block;
+    margin: 10px 0;
+    background-color: #B6C8DF; /* Пример цвета кнопки */
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'MyFontMedium', sans-serif;
+    line-height: 1.6;
+    padding: 12px 28px;
+    font-weight: 700;
+}
+
+/*Причины выбрать нас*/
+.value-prop {
+    text-align: center;
+    background-color: #f7f6f5;
+    padding: 50px 0;
+}
+
+.value-prop h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    font-family: 'MyFontMedium', sans-serif;
+    font-weight: 700;
+    color: #3D3936;
+}
+
+.value-cards {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.card {
+    opacity: 0; /* Сначала карточки скрыты */
+    transform: translateY(50px); /* Начальное положение сдвинуто вниз */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+    background-color: #ffffff; /* Белый фон для карточки */
+    padding: 20px;
+    width: 30%; /* Примерно треть общей ширины контейнера */
+    margin: 10px;
+}
+
+.card-visible {
+    opacity: 1; /* Карточка полностью видима */
+    transform: translateY(0); /* Карточка возвращается в исходное положение */
+}
+
+.card img {
+    padding-top: 50px;
+    width: 100%; /* Ширина изображения подстраивается под размер карточки */
+    max-width: 100px; /* Максимальная ширина изображения */
+    margin: 0 auto 20px; /* Центрирование изображения с отступом снизу */
+}
+
+.card h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: 'MyFonMedium', sans-serif;
+    color: #3D3936;
+}
+
+.card p {
+    font-size: 1em;
+    color: #666;
+    font-family: 'MyFontMedium', sans-serif;
+    color: #3D3936;
+}
+.btn_2_convert{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.btn_2{
+    padding: 15px 20px;
+    background-color: #225A9D;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-right: auto;
+    font-size: 14px;
+    font-family: 'MyFontMedium', sans-serif;
+    line-height: 1.6;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.btn_2:hover {
+    background-color: #EFEDEA;
+    border-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .value-prop{
+        padding: 20px 0;
+    }
+
+    .value-cards {
+        flex-direction: column; /* В столбик на мобильных устройствах */
+        margin-bottom: 20px;
+    }
+
+    .card {
+        width: auto; /* Полная ширина на мобильных */
+        margin-bottom: 20px; /* Отступ между карточками */
+    }
+
+    .value-prop h2{
+        font-size: 26px;
+
+    }
+    .card{
+        margin: 10px 20px;
+    }
+}
+
+.video-banner-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Обеспечивает покрытие всего видимого пространства видео */
+}
+
+.video-banner-content {
+    position: relative;
+    z-index: 2; /* Убедитесь, что контент видео находится над остальными элементами */
+    color: white;
+}
+
+/* Добавьте остальные стили, которые были указаны выше */
+.video-banner {
+    position: relative;
+    background: url('images/hands.jpeg') center center no-repeat; /* Замените путь к вашему изображению */
+    background-size: cover;
+    height: 850px; /* Высота блока, которую вы хотите установить */
+    display: flex;
+    align-items: center; /* Центрирование контента по вертикали */
+    justify-content: center; /* Центрирование контента по горизонтали */
+    color: white;
+    text-align: center;
+}
+
+.video-banner-content h1 {
+    font-size: 50px; /* Размер шрифта заголовка */
+    margin-bottom: 0.5em;
+    padding-bottom: 400px;
+    margin-top: -180px;
+    font-family: 'MyFonMedium', sans-serif;
+    font-weight: 700;
+}
+
+.video-banner-content p {
+    margin-bottom: 1em;
+    font-family: 'MyFonMedium', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.video-banner-btn {
+    padding: 15px 20px;
+    background-color: #225A9D;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-right: auto;
+    font-size: 14px;
+    font-family: 'MyFontMedium', sans-serif;
+    line-height: 1.6;
+    font-weight: 700;
+}
+
+.video-banner-btn:hover {
+    background-color: #EFEDEA;
+    border-color: transparent;
+}
+
+.video-banner-subtext {
+    font-size: 1em;
+    margin-bottom: 2em;
+}
+
+
+.video-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный оверлей */
+    z-index: 1; /* Оверлей должен быть под контентом */
+}
+
+/* Убедитесь, что контент появляется поверх оверлея */
+.video-banner-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+@media (max-width: 1280px){
+    .video-banner {
+        height: 650px; /* Высота блока, которую вы хотите установить */
+        width: auto;
+    }
+    .video-banner-content h1 {
+        margin-bottom: 0.5em;
+        padding-bottom: 210px;
+        margin-top: -80px;
+    }
+
+    .video-banner-content p {
+        margin-bottom: 1em;
+        font-family: 'MyFonMedium', sans-serif;
+        font-weight: 700;
+    }
+    
+}
+
+
+@media (max-width: 768px){
+    .video-banner {
+        height: 420px; /* Высота блока, которую вы хотите установить */
+        width: auto;
+    }
+    .video-banner-content h1 {
+        margin-bottom: 0.5em;
+        padding-bottom: 100px;
+        margin-top: -20px;
+        font-size: 30px;
+    }
+
+    .video-banner-content p {
+        margin-bottom: 1em;
+        font-family: 'MyFonMedium', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .video-banner-btn {
+        padding: 10px 12px;
+        background-color: #225A9D;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        margin-right: auto;
+        font-size: 12px;
+        font-family: 'MyFontMedium', sans-serif;
+        line-height: 1.6;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 600px){
+    .video-banner {
+        height: 230px; /* Высота блока, которую вы хотите установить */
+    }
+    .video-banner-content h1 {
+        margin-bottom: 0.5em;
+        padding-bottom: 55px;
+        margin-top: -20px;
+        font-size: 24px;
+    }
+
+    .video-banner-content p {
+        display: none;
+    }
+
+    .video-banner-btn {
+        padding: 6px 8px;
+        background-color: #225A9D;
+        color: white;
+        font-size: 12px;
+    }
+}
+
+
+
+/* Контакты */
+#contact {
+    background: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Подвал */
+footer {
+    background-color: #2D3A44;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Элементы footer-content располагаются вертикально */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-links {
+    text-align: left; /* Центрирование навигационных ссылок */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-secondary {
+    display: flex;
+    justify-content: space-between; /* Распределение пространства между элементами */
+    align-items: center; /* Вертикальное выравнивание элементов */
+    flex-wrap: wrap; /* Перенос элементов на новую строку, если не хватает места */
+}
+
+.social-icons {
+    display: flex; /* Иконки соцсетей располагаются горизонтально */
+    margin-right: 10px; /* Добавляем отступ справа */
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 5px;
+}
+
+.social-icons i {
+    font-size: 1.2em; /* Размер иконок */
+}
+
+.social-icons svg{
+    height: 20px;
+    width: 20px;
+    fill: white;
+}
+
+@media (max-width: 768px) {
+    .footer-content{
+        align-items: center;
+    }
+    .footer-secondary {
+        flex-direction: column; /* На маленьких экранах элементы располагаются вертикально */
+        align-items: center; /* Центрирование элементов */
+    }
+
+    .social-icons {
+        margin: 10px 0; /* Добавляем верхний и нижний отступы */
+    }
+}
