@@ -1,0 +1,596 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('../TTNormsPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MyFontBold';
+    src: url('../TTNormsPro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MyFontBlack';
+    src: url('../TTNormsPro-Black.ttf') format('truetype');
+}
+
+
+/* Основные стили */
+body {
+    font-family: 'MyFont', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333333;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    height: 92px;
+    box-shadow: 0 4px 4px 0 #d8d3cb;
+    z-index: 1000;
+    top: 30px;
+}
+
+.language-bar {
+    display: flex;
+    align-items: center;
+    position: fixed; /* Или absolute, в зависимости от вашего дизайна */
+    top: 0; /* Расположение .language-bar в верхней части экрана */
+    left: 0;
+    right: 0; /* Обеспечивает распространение .language-bar на всю ширину экрана */
+    padding: 5px 20px; /* Отступы слева и справа */
+    background-color: #efedea; /* Фоновый цвет блока */
+    z-index: 1001; /* Убедитесь, что .language-bar будет над navbar */
+    /* Предполагаемая высота, достаточная для размещения всех элементов */
+    height: 20px;
+
+}
+
+#language-select {
+    border: none; /* Граница в стиле дизайна */
+    padding: 5px 10px;
+    background-color: #efedea; /* Белый фон */
+    border-radius: 4px; /* Скругленные углы */
+    font-size: 14px; /* Размер шрифта согласно дизайну */
+    color: #333; /* Цвет текста согласно дизайну */
+    cursor: pointer;
+    -webkit-appearance: none; /* Убрать стандартный стиль в iOS */
+    -moz-appearance: none; /* Убрать стандартный стиль в Firefox */
+    appearance: none; /* Убрать стандартный стиль для остальных браузеров */
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'MyFontMedium', sans-serif;
+    color: #333333;
+}
+
+/* Стили для иконки стрелки, если вы хотите добавить */
+.language-switcher::after {
+    content: '▼'; /* Иконка стрелки */
+    color: #333; /* Цвет иконки согласно дизайну */
+    font-size: 12px; /* Размер иконки */
+    position: absolute;
+    right: 8px; /* Отступ иконки от правого края */
+    top: 50%; /* Выравнивание по вертикали */
+    transform: translateY(-50%); /* Центрирование иконки */
+    pointer-events: none; /* Сделать иконку неактивной для событий мыши */
+}
+
+#language-text {
+    margin-right: auto; /* Это выравнивает текст к правой стороне */
+    padding: 5px 0; /* Отступы для текста */
+    /* Остальные стили для #language-text */
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'MyFontMedium', sans-serif;
+    color: #333333;
+}
+
+.globe{
+    height: 25px;
+    width: 25px;
+}
+
+#language-text svg {
+    transition: transform 0.5s ease; /* Плавный переход в течение 0.5 секунды */
+    margin-right: 5px; /* Начальный отступ справа */
+}
+
+
+/* Скрыть стрелку по умолчанию внутри select (только для Webkit браузеров) */
+#language-select::-ms-expand {
+    display: none;
+}
+
+.top-content {
+    width: 100%;
+    /* Остальные стили */
+}
+
+.divider {
+    width: 94%; 
+    border: none;
+    height: 2px;
+    background-color: #E0E0E0; 
+    margin: 0 43px; 
+    display: none;
+}
+
+
+.logo-container {
+    position: absolute;
+    align-items: center; /* Добавлено выравнивание для контейнера логотипа */
+    margin-left: 30px;
+}
+
+a.logo-container {
+    display: block; /* или 'inline-block', в зависимости от нужного поведения */
+    text-decoration: none; /* убирает подчеркивание ссылки */
+}
+
+.logo-container .logo {
+    height: 25px;
+}
+
+#karma1{
+    position: absolute;
+    z-index: 1;
+    margin-left: 4px;
+}
+
+#karma2{
+    z-index: 2;
+    position: relative;
+}
+
+
+#logo_in{
+    display: none;
+    position: relative;
+}
+
+@keyframes spinY {
+  0% {
+    transform: rotateY(0deg);
+  }
+  25% {
+    transform: rotateY(360deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+#karma2 {
+    animation: spinY 5s infinite; /* Общее время анимации - 4 секунды */
+    animation-timing-function: linear, step-end; /* Плавное вращение и резкая остановка */
+    transform-origin: center; /* Вращение вокруг центра по оси Y */
+}
+
+
+.hamburger-icon {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; /* Центрирование элементов по вертикали */
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-top: 14px;
+}
+
+
+.line {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+}
+
+
+/* Навигация стили*/
+.navbar {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links a:not(.contact-us) {
+    /* Стили для всех ссылок, кроме 'Contact Us' */
+    align-items: center;
+
+}
+
+.nav-links .contact-us {
+   right: 0;
+    position: absolute;
+}
+
+.navbar a {
+    margin: 0 30px;
+    text-decoration: none;
+    font-family: 'MyFont', sans-serif;
+    color: #333;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    margin: 0 30px;
+    text-decoration: none;
+    font-family: 'MyFont', sans-serif;
+    color: #558CCE ;
+    
+}
+
+.contact-us {
+    margin: 0px 0px 0px 10px;
+    padding: 7px 20px 4px;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+}
+
+.nav-links .contact-us{
+    font-family: 'MyFontBold', sans-serif;
+    font-size: 12px;
+}
+
+.contact-us:hover {
+    background-color: #EFEDEA;
+    border-color: transparent;
+}
+
+/* Приближение верхней и нижней линии к центру и исчезновение */
+.hamburger-icon.active .line:nth-child(1) {
+    transform: translateY(6px); /* Приближаем верхнюю линию к центру */
+    opacity: 0;
+}
+
+.hamburger-icon.active .line:nth-child(3) {
+    transform: translateY(-6px); /* Приближаем нижнюю линию к центру */
+    opacity: 0;
+}
+
+/* Исчезновение средней линии после приближения других линий */
+.hamburger-icon.active .line:nth-child(2) {
+    transition: opacity 0.3s ease 0.3s; /* Задержка перед исчезновением */
+    opacity: 0;
+}
+
+/* Скрыть верхнюю и нижнюю линии */
+.hamburger-icon.active .line:nth-child(1),
+.hamburger-icon.active .line:nth-child(3) {
+    opacity: 0;
+}
+
+/* Дополнительная анимация для превращения в крестик */
+.hamburger-icon.active.cross .line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    opacity: 1;
+}
+
+.hamburger-icon.active.cross .line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+    opacity: 1;
+}
+
+/* Анимация от крестика к одной линии */
+.hamburger-icon:not(.active) .line:nth-child(1) {
+    transform: rotate(0) translateY(0);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hamburger-icon:not(.active) .line:nth-child(3) {
+    transform: rotate(0) translateY(0);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Задержка перед возвращением к гамбургер-состоянию */
+.hamburger-icon:not(.active) .line:nth-child(1),
+.hamburger-icon:not(.active) .line:nth-child(3) {
+    transition: transform 0.3s ease 0.3s, opacity 0.3s ease 0.6s;
+    opacity: 1;
+}
+
+.hamburger-icon:not(.active) .line:nth-child(2) {
+    opacity: 1;
+    transition: opacity 0.3s ease 0.3s;
+}
+
+/* Медиа-запросы для адаптивности и гамбургер-меню */
+@media (max-width: 1280px) {
+    .hamburger-icon {
+        display: flex;
+        margin-left: auto;
+        position: relative;
+    }
+
+    .nav-links,
+    .contact-us {
+        display: none;
+    }
+
+    /* Стили для показа меню при активации гамбургер-иконки */
+    .nav-links.active,
+    .contact-us.active {
+        display: block;
+        /* Дополнительные стили для мобильного меню */
+    }
+    .hamburger-icon:hover .line{
+        background-color: #558CCE; /* Замените #цвет на нужный вам цветовой код */
+    }
+}
+
+
+/* Стили для выпадающего
+ меню */
+@media (max-width: 1280px) {
+    .top-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+    .logo-container{
+        display: flex;
+        align-items: center;
+        margin-right: auto;
+    }
+
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255); /* Белый фон с небольшой прозрачностью *//
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Центрирование содержимого по горизонтали */
+        padding-top: 50px; /* Отступ сверху для логотипа */
+        box-sizing: border-box;
+        transition: transform 0.4s ease;
+        transform: translateY(-100%); /* Изначально меню скрыто за пределами экрана */
+        z-index: 1000; /* Убедитесь, что меню будет над всеми другими элементами */
+        font-size: 20px;
+    }
+
+    .divider{
+        display: block;
+    }
+
+    .navbar.active {
+        transform: translateY(0); /* Меню опускается сверху при активации */
+    }
+
+    .nav-links .contact-us {
+        right: auto; /* Отменяем прижатие к правому краю */
+        /* Вы можете добавить дополнительные стили здесь, если нужно */
+    }
+
+    .navbar .nav-links,
+    .navbar .logo-container {
+        width: 100%; /* Полная ширина */
+        padding: 15px; /* Отступы для создания пространства вокруг элементов */
+        box-sizing: border-box;
+        display: block; /* Элементы отображаются как блоки, один под другим */
+        text-align: left; /* Текст выравнивается по левому краю */
+    }
+
+    .navbar .nav-links a {
+        display: block; /* Ссылки отображаются как блоки, одна под другой */
+        margin: 20px ; /* Отступы между ссылками */
+        color: black; /* Цвет текста ссылок */
+        text-decoration: none; /* Убираем подчеркивание ссылок */
+        margin-left: 30px;
+    }
+
+    .navbar .nav-links a:hover {
+        color: #558CCE;
+    }
+
+
+    .contact-us {
+        display: block;
+        padding: 7px 20px 4px;
+        background-color: #225A9D;
+        color: white;
+        font-family: 'MyFont', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        margin-right: auto;
+    }
+
+    .navbar .nav-links .contact-us {
+        color: white; /* Белый цвет текста */
+        border: none;
+    }
+
+
+    .contact-us:hover {
+        background-color: #EFEDEA;
+        border-color: transparent;
+    }
+
+    #logo_in{
+        display: block;
+        margin-left: 32px;
+    }
+
+    .hamburger-icon {
+        display: flex; /* Убедитесь, что иконка гамбургера видна */
+        position: relative; /* Относительное позиционирование внутри header-container */
+        z-index: 1001;
+        margin-left: auto; /* Иконка гамбургера будет справа */
+        align-self: center;
+        margin-right: 10px;
+        margin-top: -8px;
+    }
+
+
+    .logo {
+        height: auto; /* Высота логотипа будет автоматически подстроена */
+        max-height: 50px; /* Максимальная высота логотипа */
+        width: auto; /* Ширина логотипа будет подстраиваться */
+    }
+
+    .navbar.active .logo-container {
+        margin-top: 0; /* Убираем верхний отступ при активации меню */
+    }
+}   
+
+.globe{
+    height: 25px;
+    width: 25px;
+}
+
+#language-text svg {
+    transition: transform 0.5s ease; /* Плавный переход в течение 0.5 секунды */
+    margin-right: 5px; /* Начальный отступ справа */
+}
+
+main {
+    max-width: 960px; /* Ширина контента по вашему выбору */
+    margin: 0 auto; /* Центрирование контента */
+    padding: 20px;
+    margin-top: 100px;
+}
+
+main article {
+    padding: 20px;
+    margin-top: 20px; /* Отступ сверху */
+}
+
+main h1 {
+    font-size: 56px; 
+    font-family: 'MyFontBold', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #333333;
+    text-align: center;
+}
+
+main p {
+    font-size: 20px; 
+    font-family: 'MyFont', sans-serif;
+
+}
+
+main .img1{
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px){
+    main h1{
+        font-size: 40px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px){
+    main h1{
+        font-size: 26px;
+        text-align: center;
+    }
+}
+
+/* Подвал */
+footer {
+    background-color: #2D3A44;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Элементы footer-content располагаются вертикально */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-links {
+    text-align: left; /* Центрирование навигационных ссылок */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-secondary {
+    display: flex;
+    justify-content: space-between; /* Распределение пространства между элементами */
+    align-items: center; /* Вертикальное выравнивание элементов */
+    flex-wrap: wrap; /* Перенос элементов на новую строку, если не хватает места */
+}
+
+.social-icons {
+    display: flex; /* Иконки соцсетей располагаются горизонтально */
+    margin-right: 10px; /* Добавляем отступ справа */
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 5px;
+}
+
+.social-icons i {
+    font-size: 1.2em; /* Размер иконок */
+}
+
+.social-icons svg{
+    height: 20px;
+    width: 20px;
+    fill: white;
+}
+
+@media (max-width: 768px) {
+    .footer-content{
+        align-items: center;
+    }
+    .footer-secondary {
+        flex-direction: column; /* На маленьких экранах элементы располагаются вертикально */
+        align-items: center; /* Центрирование элементов */
+    }
+
+    .social-icons {
+        margin: 10px 0; /* Добавляем верхний и нижний отступы */
+    }
+}
