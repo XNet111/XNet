@@ -14,11 +14,6 @@
 }
 
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
 /* Основные стили */
 body {
     font-family: 'MyFont', sans-serif;
@@ -388,7 +383,6 @@ a.logo-container {
 
     .divider{
         display: block;
-        width: 80%; 
     }
 
     .navbar.active {
@@ -473,453 +467,193 @@ a.logo-container {
     .navbar.active .logo-container {
         margin-top: 0; /* Убираем верхний отступ при активации меню */
     }
-}    
+}   
 
-.globe{
-    height: 25px;
-    width: 25px;
-}
-
-#language-text svg {
-    transition: transform 0.5s ease; /* Плавный переход в течение 0.5 секунды */
-    margin-right: 5px; /* Начальный отступ справа */
-}
-
-
-
-
-
-/*Процесс найма*/
-.history{
-    margin-top: 170px;
-    margin-left: 50px;
-    margin-bottom: -35px;
-}
-
-main h1 {
-    font-size: 56px; 
-    font-family: 'MyFontBold', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #333333;
-    text-align: center;
-    margin-left: -50px;
-    margin-bottom: 35px;
-}
-
-.timeline {
+.container {
   display: flex;
+  width: 100vw; /* ширина блока равна ширине окна браузера */
+  min-height: 30vw; /* минимальная высота блока */
+  background-color: #f4f4f4;
+  margin-top: 130px;
+}
+
+.image-side {
+  flex: 0 0 30vw; /* ширина левой части фиксирована и равна 30% от ширины окна браузера */
+  background-image: url('../images/woman.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.text-side {
+  flex: 0 0 70vw; /* ширина правой части фиксирована и равна 70% от ширины окна браузера */
+  display: flex;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  padding: 35px;
-  box-sizing: border-box;
-  margin-top: -15px;
-}
-
-.entry {
-  display: flex;
-  position: relative;
-  width: 100%;
-  max-width: 1200px; /* Adjust this to set the maximum width of the entire entry */
-  height: 200px;
-}
-
-.left-space {
-  flex: 1;
-}
-
-.date-and-text {
-  flex: 1;
-  position: relative;
-  padding-left: 50px; /* This should be enough space for the line and circle */
-  justify-content: center; /* Center content vertically */
-}
-
-.date-and-text::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 5px; /* width of the line */
-  background-color: #1F487E; /* Adjust the color to match the circle and line */
-}
-
-.date-and-text::after {
-  content: '';
-  position: absolute;
-  left: -13px; /* half of the width of the circle to center it on the line */
-  height: 30px;
-  top: 0px;
-  width: 30px;
-  background-color: #1F487E; /* Adjust the color to match the circle and line */
-  border-radius: 50%;
-}
-
-.date {
-    font-family: 'MyFontMedium', sans-serif;
-  font-weight: bold;
-  color: #333; /* Adjust the color to match the screenshot */
-  margin-bottom: 5px;
-}
-
-.text {
-  color: #333; /* Adjust the color to match the screenshot */
-  font-size: 16px; /* Adjust the size to match the screenshot */
-}
-
-.timeline-mirror {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  margin-top: -40px;
-  height: 200px;
-}
-
-.entry-mirror {
-  display: flex;
-  position: relative;
-  width: 100%;
-  max-width: 1200px; /* Adjust this to set the maximum width of the entire entry */
-  height: 200px;
-}
-
-.text-date-container {
-  flex: 1;
-  position: relative;
-  padding-right: 50px; /* Space for the line and circle on the right */
-  display: flex;
-  margin-left: -90px;
-  flex-direction: column;
-  text-align: right;
-  height: 200px;
-}
-
-.text-date-container::before {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 5px; /* Width of the line */
-  background-color: #1F487E; /* Color of the line */
-}
-
-.text-date-container::after {
-  content: '';
-  position: absolute;
-  right: -13px; /* Half the width of the circle to center it on the line */
-  top: 0px;
-  transform: translateY(-50%); /* Center the circle vertically */
-  height: 30px;
-  width: 30px;
-  background-color: #1F487E; /* Color of the circle */
-  border-radius: 50%;
-}
-
-.date-left {
-    font-family: 'MyFontMedium', sans-serif;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.text-left {
-  color: #333;
-  font-size: 16px;
-  padding-left: 30px;
-}
-
-.right-space-mirror {
-  flex: 1;
-  height: 200px;
-}
-
-.aos-animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.right-space-mirror .date-left{
-    display: none;
-}
-
-.right-space-mirror .text-left{
-    display: none;
-}
-
-@media (max-width: 786px){
-    .history{
-        margin-left: -270px;
-    }
-    main h1 {
-        font-size: 40px;
-        margin-left: 270px;
-    }
-    .text-date-container .date-left {
-        display: none;
-        margin-left: 40px;
-        height: 300px;
-    }
-    .text-date-container .text-left{
-        display: none;
-        margin-left: 40px;
-    }
-    .right-space-mirror{
-        padding-left: 40px;
-    }
-    .timeline-mirror{
-        margin-left: 20px;
-    }
-    main {
-        margin-left: -300px;
-    }
-    .right-space-mirror .date-left{
-        display: block;
-    }
-
-    .right-space-mirror .text-left{
-        display: block;
-    }   
+  background-color: #1F487E;
 
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.text-side h1 {
+  font-size: 1.6vw; /* размер шрифта также масштабируется с шириной окна браузера */
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0 2vw;
+  text-align: left;
+  font-family: 'MyFontBold', sans-serif;
+  line-height: 1.2;
+
 }
 
-.timeline .timeline-mirror {
-  /* Остальные стили timeline-entry */
-  animation: fadeIn 1s ease-in-out forwards; /* Применение анимации */
-}
-
-.timeline::before,
-.timeline::after {
-  /* Остальные стили для ::before и ::after */
-  animation: fadeIn 1s ease-in-out forwards; /* Применение анимации */
-}
-
-.timeline-mirror::before,
-.timeline-mirror::after {
-  /* Остальные стили для ::before и ::after */
-  animation: fadeIn 1s ease-in-out forwards; /* Применение анимации */
-}
-
-
-
-
-
-
-
-/*Глабвный блок*/
-.split-screen {
-    display: flex;
-    justify-content: space-between;
-    font-family: 'MyFont', sans-serif;
-    margin: 0 auto;
-    /* Остальные стили */
-}
-
-.left-pane, .right-pane {
-    flex: 1;
-    flex-basis: 50%;
-    box-sizing: border-box;
-    background-color: #1F487E;
-}
-
-.left-pane {
-    color: white;
-    display: flex;
+@media (max-width: 768px) {
+  .container {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-}
+  }
 
-.right-pane {
-    background-color: #1F487E;
-}
+  .text-side{
+    height: 70px;
+  }
 
-#hero {
-    padding: 100px;
-}
+  .text-side p {
+    font-size: 4vw; /* увеличиваем шрифт для маленьких экранов */
+  }
 
+  .text-side h1 {
+    font-size: 30px; /* увеличиваем шрифт для маленьких экранов */
+  }
 
-#hero h1 {
-    font-size: 50px; 
-    font-family: 'MyFontBold', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    color: white;
-}
-
-#hero p {
-    font-size: 16px; 
-    font-family: 'MyFont', sans-serif;
-}
-
-.right-pane img {
-    display: block;
-    max-width: 100%;/* Чтобы изображение сохраняло свои пропорции */
-    height: auto;
-    margin-bottom: 0; /* Добавляем этот стиль */
-    background-size: cover;   
-}
-
-.btn {
-    display: inline-block;
-    margin: 10px 0;
-    background-color: #D9F0FF; /* Пример цвета кнопки */
-    color: #225A9D;
-    text-decoration: none;
-    font-size: 14px;
-    font-family: 'MyFontMedium', sans-serif;
-    line-height: 1.6;
-    padding: 12px 28px;
-    font-weight: 700;
-}
-
-.btn:hover {
-    background-color:   #E6E7E7; /* Пример цвета кнопки */  
-}
-
-.btn_1{
-    margin-left: 15px;
-    color: white;
-    font-size: 18px;
-    text-decoration-thickness: 1px;
-    font-family: 'MyFontBold', sans-serif;
-    text-decoration: none;
-     border-bottom: 1px solid white; /* Добавляем нижнюю границу */
-    padding-bottom: 1px;
-    display: inline-block; /* Убедитесь, что ссылка ведет себя как блочный элемент для правильного отображения границы */
-    margin-bottom: 2px;
-    line-height: 0.8;
-}
-
-
-.btn_1:hover{
-    color: #3a72b5;
-
-}
-
-#hero svg {
-    padding-left: 10px; /* Небольшой отступ от текста кнопки */
-    fill: currentColor;
-}
-
-.btn_1:hover svg {
-    fill: #3a72b5; /* Цвет SVG при наведении */
-}
-
-@media (max-width: 1200px){
-    #hero{
-        padding: 40px;
-    }
-    #hero h1{
-        font-size: 32px;
+  .container {
+      width: 100vw; /* ширина блока равна ширине окна браузера */
+      min-height: 30vw; /* минимальная высота блока */
     }
 
-    #hero p{
-        font-size: 16px;
+    .text-block h2{
+        font-size: 24px;
+    }
+
+   .image-side {
+      flex: 0 0 90vw; /* ширина левой части фиксирована и равна 30% от ширины окна браузера */
+
     }
 }
-
-@media (min-width: 600px) and (max-width: 1000px) {
-    .split-screen {
-        flex-direction: column; /* Стекаем блоки вертикально */
-        padding-top: 65px; /* Половина от изначального отступа, предполагаем что navbar тоже уменьшен */
-        margin-top: 46px; /* Половина высоты navbar для средних устройств */
-    }
-
-    .left-pane, .right-pane {
-        flex-basis: auto; /* Автоматическая ширина блоков */
-        width: 100%; /* Блоки теперь займут всю ширину */
-    }
-
-    .left-pane {
-        padding: 20px; /* Уменьшенные отступы внутри блока для текста */
-    }
-
-    #hero h1 {
-        font-size: 50px; /* Уменьшенный размер шрифта для заголовка */
-    }
-
-    #hero p {
-        font-size: 24px; /* Уменьшенный размер шрифта для параграфа */
-    }
-
-    .btn{
-        padding: 10px 24px; /* Уменьшенные отступы для кнопок */
-        font-size: 12px; /* Уменьшенный размер шрифта для кнопок */
-        margin: 8px 0; /* Уменьшенные маржины сверху и снизу для кнопок */
-    }
-    .right-pane img{
-        border-bottom-left-radius: 0px;
-    }
-}
-
 
 @media (max-width: 600px) {
-    .split-screen {
-        flex-direction: column;
-        padding-top: 60px; /* Меньше, так как navbar тоже будет меньше */
-        margin-top: 68px; /* Половина высоты navbar на мобильных */
-    }
+  .container {
+    flex-direction: column;
+  }
 
-    .left-pane, .right-pane {
-        flex-basis: 100%;
-    }
+  .image-side, .text-side {
+    flex: 0 0 50vw; /* на маленьких экранах делаем блоки равными по ширине */
+  }
 
+  .text-side{
+    height: 70px;
+  }
 
-    #hero h1 {
-        font-size: 36px; /* Меньший размер шрифта для заголовка */
-    }
+  .text-side p {
+    font-size: 4vw; /* увеличиваем шрифт для маленьких экранов */
+  }
 
-    #hero p {
-        font-size: 20px; /* Меньший размер шрифта для параграфа */
-    }
+  .text-side h1 {
+    font-size: 20px; /* увеличиваем шрифт для маленьких экранов */
+    padding: 40px;
+  }
+  .text-block h2 {
+    font-size: 20px;
+  }
 
-    .btn {
-        font-size: 12px; /* Меньший размер шрифта для кнопок */
-        padding: 8px 20px; /* Меньшие отступы для кнопок */
-    }
-    #hero{
-        padding-bottom: 42px;
-    }
-    .right-pane img{
-        border-bottom-left-radius: 0px;
-    }
+  .container {
+    width: 100vw; /* ширина блока равна ширине окна браузера */
+    min-height: 30vw; /* минимальная высота блока */
+  }
+
+   .image-side {
+    flex: 0 0 90vw; /* ширина левой части фиксирована и равна 30% от ширины окна браузера */
+  }
+
 }
 
-@media (max-width: 400px) {
-     #hero h1 {
-        font-size: 30px; /* Меньший размер шрифта для заголовка */
-    }
+/*статья*/
+.text-block {
+  max-width: 1024px; /* Adjust the width as needed */
+  margin: 0 auto; /* This will center your block */
+  padding: 50px; /* Add padding as needed */
+  background-color: #ffffff; /* Set the background color */
+  color: #333; /* Set the text color */
+  text-align: left;
+}
 
-    #hero p {
-        font-size: 18px; /* Меньший размер шрифта для параграфа */
-    }
+.text-block h1 {
+  font-size: 48px; /* Adjust the font-size as needed */
+  margin-bottom: 20px; /* Add space below the heading */
+  font-family: 'MyFontBold', sans-serif;
+}
 
-    .btn {
-        font-size: 12px; /* Меньший размер шрифта для кнопок */
-        padding: 8px 20px; /* Меньшие отступы для кнопок */
-    }
-    #hero{
-        padding-bottom: 42px;
-    }
-    .right-pane img{
-        border-bottom-left-radius: 0px;
-    }
+.text-block h2 {
+    margin-bottom: 30px; /* Add space below the heading */
+    font-family: 'MyFontBold', sans-serif;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.text-block p {
+  font-size: 1.4rem; /* Adjust the font-size as needed */
+  line-height: 1.
 }
 
 
+/*Ссылки*/
+.country-selector {
+  width: 100%;
+  background-color: #333; /* Цвет фона */
+  color: #fff; /* Цвет текста */
+  padding: 20px; /* Паддинг вокруг */
+  box-sizing: border-box;
+}
 
+.country-selector-title {
+  font-size: 30px; /* Размер шрифта */
+  margin-bottom: 20px; /* Отступ снизу */
+  text-align: center; /* Выравнивание по центру */
+}
 
+.country-list {
+  list-style: none; /* Убрать маркеры списка */
+  padding: 0; /* Убрать паддинги списка */
+  text-align: center; /* Выравнивание по центру */
+  display: flex; /* Использовать гибкие контейнеры */
+  flex-wrap: wrap; /* Перенос элементов на следующую строку */
+  justify-content: center; /* Выравнивание элементов по центру */
+}
 
+.country-list li {
+  margin: 5px; /* Отступы вокруг элементов списка */
+  display: inline-block; /* Элементы как строчно-блочные */
+}
+
+.country-list a {
+  color: #fff; /* Цвет текста ссылки */
+  font-weight: bold; /* Жирный шрифт */
+  padding: 5px 10px; /* Паддинги вокруг текста */
+  display: flex;
+  justify-content: center; 
+  text-decoration: none;
+}
+
+.country-list a:hover {
+  text-decoration: underline; /* Подчеркивание при наведении */
+}
+.country-selector ul li a svg{
+    fill: #fff;
+    margin-right: 5px;
+    transition: fill .1s ease-in;
+    margin-top: 0px;
+}
+
+#path_4033{
+    margin-top: 20px;
+}
 
 /* Подвал */
 footer {
