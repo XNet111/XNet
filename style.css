@@ -504,6 +504,10 @@ a.logo-container {
     text-align: left;
 }
 
+.right-pane {
+    background-color: #1F487E;
+}
+
 #hero {
     padding: 100px;
 }
@@ -851,7 +855,7 @@ a.logo-container {
 }
 
 .advantage-link {
-    color: #000000;
+    color: #333333;
     text-decoration-thickness: 1px;
     font-weight: bold;
     font-size: 20px;
@@ -869,17 +873,6 @@ a.logo-container {
     margin-left: 3px;
 }
 
-/*Анимация появления секции*/
-#section_one, #section_two, #section_three {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: transform 0.3s ease-out;
-}
-
-#section_one.visible, #section_two.visible, #section_three.visible{
-    opacity: 1;
-    transform: translateY(0);
-}
 
 @media (max-width: 1100px) {
     .container {
@@ -987,85 +980,6 @@ a.logo-container {
 }
 
 
-/*Section Two*/
-#section_two{
-    padding-top: 0px;
-}
-
-#section_two img{
-    border-bottom-left-radius: 0px;
-}
-
-#section_two h1{
-    font-size: 50px; 
-    font-family: 'MyFontBold', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #B6C8DF;
-}
-
-#section_two p{
-    font-size: 20px; 
-    font-family: 'MyFont', sans-serif;
-}
-
-#section_two .btn{
-    display: inline-block;
-    margin: 10px 0;
-    background-color: #B6C8DF; /* Пример цвета кнопки */
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    font-family: 'MyFontMedium', sans-serif;
-    line-height: 1.6;
-    padding: 12px 28px;
-    font-weight: 700;
-}
-
-#section_three{
-    padding-top: 0px;
-}
-
-#section_three .left-pane {
-    background-color: #759ECE;
-    color: #333;
-}
-
-#section_three .left-pane .btn{
-    background-color: #225A9D;
-}
-
-
-#section_three img{
-    border-bottom-left-radius: 0px;
-}
-
-#section_three h1{
-    font-size: 50px; 
-    font-family: 'MyFontBold', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #225A9D;;
-}
-
-#section_three p{
-    font-size: 20px; 
-    font-family: 'MyFont', sans-serif;
-    color: #225A9D;;
-}
-
-#section_three .btn{
-    display: inline-block;
-    margin: 10px 0;
-    background-color: #B6C8DF; /* Пример цвета кнопки */
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    font-family: 'MyFontMedium', sans-serif;
-    line-height: 1.6;
-    padding: 12px 28px;
-    font-weight: 700;
-}
 
 /*Причины выбрать нас*/
 .value-prop {
@@ -1076,7 +990,7 @@ a.logo-container {
 
 .value-prop h2 {
     font-size: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-family: 'MyFontMedium', sans-serif;
     font-weight: 700;
     color: #3D3936;
@@ -1090,26 +1004,33 @@ a.logo-container {
 }
 
 .card {
-    opacity: 0; /* Сначала карточки скрыты */
-    transform: translateY(50px); /* Начальное положение сдвинуто вниз */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
-    background-color: #ffffff; /* Белый фон для карточки */
-    padding: 20px;
-    width: 30%; /* Примерно треть общей ширины контейнера */
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    background-color: #ffffff;
+    padding: 0; /* Удалите лишний padding, чтобы карточка не имела отступов внутри */
+    width: 30%;
     margin: 10px;
+    display: flex; /* Превратите карточку в flex-контейнер */
+    flex-direction: column; /* Выставите направление flex-контейнера как колонку */
+    margin-bottom: 70px;
 }
 
-.card-visible {
-    opacity: 1; /* Карточка полностью видима */
-    transform: translateY(0); /* Карточка возвращается в исходное положение */
+.card-top {
+    background-color: #1F487E; /* Задайте цвет верхней половины */
+    padding: 50px 0; /* Добавьте padding для верхней половины */
+    text-align: center;
+}
+
+.card-bottom {
+    padding: 20px; /* Оставьте padding для нижней половины */
 }
 
 .card img {
-    padding-top: 50px;
-    width: 100%; /* Ширина изображения подстраивается под размер карточки */
-    max-width: 100px; /* Максимальная ширина изображения */
-    margin: 0 auto 20px; /* Центрирование изображения с отступом снизу */
+    width: 100%;
+    max-width: 100px;
+    margin: 0 auto 20px;
 }
+
 
 .card h3 {
     font-size: 1.5em;
@@ -1356,7 +1277,7 @@ a.logo-container {
 
 /* Подвал */
 footer {
-    background-color: #2D3A44;
+    background-color: #143458;
     color: #fff;
     padding: 20px 0;
 }
