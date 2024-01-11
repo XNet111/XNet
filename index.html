@@ -5,6 +5,8 @@
     <!-- Ссылки на CSS и другие мета-теги -->
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -16,7 +18,7 @@
                 <path d="M 0 0 L 5 5 L 0 10 z" fill="#333"></path>
             </svg>
         </p>
-        <img class="globe" src="images/globe.png">
+        <img class="globe" src="../images/globe.png">
         <select name="language" id="language-select">
             <option value="en">RU</option>
             <option value="fr">EN</option>
@@ -24,13 +26,13 @@
     </div>
     <div class="top-content">
          <a href="index.html" class="logo-container">
-                <img src="images/karma4.png" alt="Logo" class="logo" id="karma2">
-                <img src="images/karma3.png" alt="Logo" class="logo" id="karma1">
+                <img src="../images/karma4.png" alt="Logo" class="logo" id="karma2">
+                <img src="../images/karma3.png" alt="Logo" class="logo" id="karma1">
         </a>
         <nav class="navbar">
             <a href="index.html" class="logo-container" id="logo_in">
-                <img src="images/karma4.png" alt="Logo" class="logo" id="karma2">
-                <img src="images/karma3.png" alt="Logo" class="logo" id="karma1">
+                <img src="../images/karma4.png" alt="Logo" class="logo" id="karma2">
+                <img src="../images/karma3.png" alt="Logo" class="logo" id="karma1">
             </a>
             <hr class="divider">
             <div class="nav-links">
@@ -95,7 +97,7 @@
 </div>
 
 
-<div class="container" id="section_one">
+<div class="container" id="section_one" data-aos="fade-up">
     <div class="image-section">
         <img src="images/psycho.jpg" alt="Описание изображения">
     </div>
@@ -120,7 +122,7 @@
     </div>
 </div>
 
-<div class="video-banner">
+<div class="video-banner" data-aos="fade-up">
     <video id="bannerVideo" class="video-banner-media" autoplay loop muted playsinline preload="auto">
         <source src="images/hads2.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -133,23 +135,35 @@
     <div class="video-banner-overlay"></div>
 </div>
 
-<section class="value-prop">
+<section class="value-prop" data-aos="fade-up"> 
     <h2>Почему выбирают нас</h2>
     <div class="value-cards">
         <div class="card">
-            <img src="images/pricing.png" alt="Insight">
-            <h3>Гибкая ценовая политика</h3>
-            <p>XNet предлагает уникальную модель ценообразования: вместо процента от оклада мы устанавливаем фиксированную стоимость за закрытие вакансии, делая процесс найма более доступным и прозрачным для клиентов.</p>
+            <div class="card-top">
+               <img src="images/hands.svg" alt="Insight">
+            </div>
+            <div class="card-bottom">   
+                <h3>Гибкая ценовая политика</h3>
+                <p>XNet предлагает уникальную модель ценообразования: вместо процента от оклада мы устанавливаем фиксированную стоимость за закрытие вакансии, делая процесс найма более доступным и прозрачным для клиентов.</p>
+            </div>    
         </div>
         <div class="card">
-            <img src="images/experience.png" alt="Partnership">
-            <h3>Уникальны подход к оценке кандидатов</h3>
-            <p>Мы используем передовые методы психодиагностики кандидатов, обеспечивая глубокий анализ их компетенций и личностных качеств для эффективного подбора персонала и удовлетворения потребностей работодателей.</p>
+            <div class="card-top">
+                <img src="images/Hand_lamp.svg" alt="Partnership">
+            </div>    
+            <div class="card-bottom"> 
+                <h3>Уникальны подход к оценке кандидатов</h3>
+                <p>Мы используем передовые методы психодиагностики кандидатов, обеспечивая глубокий анализ их компетенций и личностных качеств для эффективного подбора персонала и удовлетворения потребностей работодателей.</p>
+            </div>    
         </div>
         <div class="card">
-            <img src="images/performance-appraisal.png" alt="Opportunity">
-            <h3>Опытные рекрутеры</h3>
-            <p>XNet команда опытных рекрутеров применяет передовые методы психодиагностики для тщательного подбора персонала, гарантируя высокое качество и эффективность процесса найма.</p>
+            <div class="card-top">
+                <img src="images/Lamp.svg" alt="Opportunity">
+            </div>
+            <div class="card-bottom">
+                <h3>Опытные рекрутеры</h3>
+                <p>XNet команда опытных рекрутеров применяет передовые методы психодиагностики для тщательного подбора персонала, гарантируя высокое качество и эффективность процесса найма.</p>
+            </div>
         </div>
     </div>
     <div class="btn_2_convert">
@@ -185,6 +199,19 @@
 </footer>
 
  <script src="js/scripts.js"></script>
+<script>
+    AOS.init({
+    // Настройки, которые могут быть переопределены для каждого элемента с использованием атрибутов `data-aos-*`:
+    offset: 200, // смещение (в пикселях) относительно оригинальной точки триггера
+    delay: 40, // значения от 0 до 3000, с шагом 50ms
+    duration: 500, // значения от 0 до 3000, с шагом 50ms
+    easing: 'ease', // дефолтное упругость анимации
+    once: false, // анимация должна срабатывать только один раз - при скроллинге вниз
+    mirror: false, // должны ли элементы анимироваться при прокрутке вне видимости
+    anchorPlacement: 'top-bottom', // определяет, какая часть элемента должна быть видна, чтобы триггерить анимацию
+  });
+</script>
+     
  <script type="text/javascript">
      function togglePlay() {
     var video = document.getElementById("bannerVideo");
